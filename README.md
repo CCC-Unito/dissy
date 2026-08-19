@@ -1,4 +1,4 @@
-# DisSy 
+# DisSy 🗣️⚡🗣️
 A Python Library to compute Disagreement Systematicity (σ, *pron. 'sigma'*)
 
 As described in Basile (2026): [A Measure of Systematic Disagreement](https://aclanthology.org/2026.nlperspectives-1.6/)
@@ -54,7 +54,7 @@ print(sigma(sample_array))
 1.0
 ``
 
-## Theoretical background
+## 🔺±️ Theoretical background
 
 In Social Psychology, like/dislike relationships between humans are modeled through signed undirected graphs, where the nodes represent the individuals and and edge between A and B represent their relationship (if present) as positive (+) or negative (-).
 
