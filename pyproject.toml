@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dissy"
+version = "0.1"
+dependencies = [
+    "numpy>=2.5.2",
+    "pandas>=3.0.5",
+    "krippendorff>=0.8.2",
+    "tqdm>=4.70",
+    "six>=1.17.0"
+]
+requires-python = ">=3.12"
+authors = [
+  {name = "Valerio Basile", email = "valerio.basile@unito.it"},
+]
+readme = "README.md"
