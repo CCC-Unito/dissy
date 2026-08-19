@@ -1,5 +1,5 @@
-# dissy
-A Python Library to compute Disagreement Systematicity (σ)
+# DisSy 
+A Python Library to compute Disagreement Systematicity (σ, *pron. 'sigma'*)
 
 As described in Basile (2026): [A Measure of Systematic Disagreement](https://aclanthology.org/2026.nlperspectives-1.6/)
 
@@ -58,7 +58,7 @@ print(sigma(sample_array))
 
 In Social Psychology, like/dislike relationships between humans are modeled through signed undirected graphs, where the nodes represent the individuals and and edge between A and B represent their relationship (if present) as positive (+) or negative (-).
 
-The theory of [Structural Balance](https://en.wikipedia.org/wiki/Balance_theory)([Cartwright and Harary, 1956](https://pubmed.ncbi.nlm.nih.gov/13359597/)) posits that any three entities in relationship with each other (a *triangle*) in such a graph tend towards a balance achieved by either all edges being + or a situation where one edge is + and the other two are -. The other two possible configurations are instead regarded as imbalanced:
+The theory of [Structural Balance](https://en.wikipedia.org/wiki/Balance_theory) ([Cartwright and Harary, 1956](https://pubmed.ncbi.nlm.nih.gov/13359597/)) posits that any three entities in relationship with each other (a *triangle*) in such a graph tend towards a balance achieved by either all edges being + or a situation where one edge is + and the other two are -. The other two possible configurations are instead regarded as imbalanced:
 
 ![alt text](https://raw.githubusercontent.com/CCC-Unito/dissy/refs/heads/main/SBT.png?raw=true)
 
@@ -68,4 +68,4 @@ $$
 \sigma = \frac{(\\\# \text{balanced triangles}) }{(\\\# \text{triangles})}
 $$
 
-The outcome of an annotation task is represented as a signed undirected graph, where each node represents an annotator, and the $+ / -$ sign indicates whether the pair agrees ($+$) or disagrees ($-$). The pairwise Krippendorff's $\alpha$ is computed ($\alpha_{i , j}$ where $i$ and $j$ are two annotators) and compared to the mean agreement $\overline\alpha$. The edge ${i, j}$ is given the positive sign (+) if $\alpha_{i , j} \geq \overline\alpha$, or the negative sign (-) otherwise.
+The outcome of an annotation task is represented as a signed undirected graph, where each node represents an annotator, and the $+ / -$ sign indicates whether the pair agrees ($+$) or disagrees ($-$). The pairwise [Krippendorff's $\alpha$](https://en.wikipedia.org/wiki/Krippendorff%27s_alpha) is computed ($\alpha_{i , j}$ where $i$ and $j$ are two annotators) and compared to the mean agreement $\overline\alpha$. The edge ${i, j}$ is given the positive sign (+) if $\alpha_{i , j} \geq \overline\alpha$, or the negative sign (-) otherwise.
