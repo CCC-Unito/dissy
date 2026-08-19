@@ -54,3 +54,18 @@ print(sigma(sample_array))
 1.0
 ``
 
+## Theoretical background
+
+In Social Psychology, like/dislike relationships between humans are modeled through signed undirected graphs, where the nodes represent the individuals and and edge between A and B represent their relationship (if present) as positive (+) or negative (-).
+
+The theory of [Structural Balance](https://en.wikipedia.org/wiki/Balance_theory)([Cartwright and Harary, 1956](https://pubmed.ncbi.nlm.nih.gov/13359597/)) posits that any three entities in relationship with each other (a *triangle*) in such a graph tend towards a balance achieved by either all edges being + or a situation where one edge is + and the other two are -. The other two possible configurations are instead regarded as imbalanced:
+
+![alt text](https://raw.githubusercontent.com/CCC-Unito/dissy/refs/heads/main/SBT.png?raw=true)
+
+[Davis (1967)](https://www.sciencedirect.com/science/chapter/edited-volume/abs/pii/B9780124424500500092?via%3Dihub) applies the notion of structural balance to graphs, calling a balanced graph an undirected signed graph where all triangles (i.e., cycles of length 3) are balanced, and proving that a balanced graph has a unique clustering. I extend this definition to a degree of balancedness, that is, the rate of triangles in an undirected signed graph that are balanced:
+
+$$
+\sigma = \frac{(\\\# \text{balanced triangles}) }{(\\\# \text{triangles})}
+$$
+
+The outcome of an annotation task is represented as a signed undirected graph, where each node represents an annotator, and the $+ / -$ sign indicates whether the pair agrees ($+$) or disagrees ($-$). The pairwise Krippendorff's $\alpha$ is computed ($\alpha_{i , j}$ where $i$ and $j$ are two annotators) and compared to the mean agreement $\overline\alpha$. The edge ${i, j}$ is given the positive sign (+) if $\alpha_{i , j} \geq \overline\alpha$, or the negative sign (-) otherwise.
