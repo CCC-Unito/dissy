@@ -19,11 +19,11 @@ The file needs three columns named:
 - annotator
 - label
   
-``
+````
 from dissy import sigma
 sigma("sample_data.csv")
 0.8
-``
+````
 
 ### With a DataFrame (instance, annotator, label)
 
@@ -32,7 +32,7 @@ The DataFrame needs three columns named:
 - annotator
 - label
   
-``
+````
 from dissy import sigma
 data = pd.DataFrame({
     'instance': [1, 1, 1, 2, 2, 2, 3, 3, 3],
@@ -41,18 +41,18 @@ data = pd.DataFrame({
 })
 sigma(data)
 1.0
-``
+````
 
 ### With a NumPy array
 
 The matrix should have shape *num_annotators* X *num_instances*
 
-``
+````
 from dissy import sigma
 sample_array = np.array([[1, 1, 0], [1, 1, 1], [1, 0, 0]])
 print(sigma(sample_array))
 1.0
-``
+````
 
 ## 🔺±️ Theoretical background
 
