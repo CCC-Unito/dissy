@@ -1,7 +1,6 @@
 from itertools import combinations
 import krippendorff
 import numpy as np
-from tqdm import tqdm
 import pandas as pd
 import os
 
@@ -42,7 +41,7 @@ def annotator_adjacency_list(data_matrix):
     alpha_avg = np.mean(list(pairwise_alpha.values()))
 
     # Second pass: assign signs and populate the adjacency list.
-    for (annotator1, annotator2), alpha in tqdm(pairwise_alpha.items(), disable=not verbose):
+    for (annotator1, annotator2), alpha in pairwise_alpha.items():
         sign = 1 if alpha > alpha_avg else -1
         adjacency[annotator1].append((annotator2, sign))
         adjacency[annotator2].append((annotator1, sign))
@@ -50,9 +49,8 @@ def annotator_adjacency_list(data_matrix):
     return adjacency
 
 
-def _sigma(data_matrix):
+def _sigma(data_matrix, return_alpha):
     adjacency_list = annotator_adjacency_list(data_matrix)
-
     # Only vertices that actually have at least one edge matter.
     active_vertices = [v for v, neighbors in adjacency_list.items() if neighbors]
     if not active_vertices:
@@ -80,7 +78,7 @@ def _sigma(data_matrix):
     # For each vertex u, every pair of its outgoing neighbors (v, w) that
     # are themselves connected forms a triangle (u, v, w), discovered
     # exactly once (since u has the lowest order in the triple).
-    for u in tqdm(active_vertices, disable=not verbose):
+    for u in active_vertices:
         out_neighbors = directed_adj[u]
         for i in range(len(out_neighbors)):
             v = out_neighbors[i]
@@ -95,10 +93,15 @@ def _sigma(data_matrix):
                     if uv_sign * uw_sign * vw_sign == 1:
                         balanced_cycles += 1
 
-    return balanced_cycles / total_cycles if total_cycles > 0 else 0
+    s = balanced_cycles / total_cycles if total_cycles > 0 else 0
+    if return_alpha:
+        alpha = krippendorff.alpha(reliability_data=data_matrix, level_of_measurement='nominal')
+        return s, alpha
+    else:
+        return s
 
 
-def sigma(data_source):
+def sigma(data_source, return_alpha=False):
     if isinstance(data_source, np.ndarray):
         data_matrix = data_source
     else:
@@ -122,6 +125,6 @@ def sigma(data_source):
             ).to_numpy().T
         except Exception as e:
             raise ValueError(f"Error processing data: {e}")
-    return _sigma(data_matrix)
+    return _sigma(data_matrix, return_alpha=return_alpha)
 
 
